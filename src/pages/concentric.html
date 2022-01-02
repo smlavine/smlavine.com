@@ -1,7 +1,76 @@
+<!DOCTYPE html>
+<!--
+Copyright (C) 2019-2020 Sebastian LaVine <mail@smlavine.com>
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.  This file is offered as-is,
+without any warranty.
+
+Description: Draws a circle where the user clicks, with the radius
+determined by how long the click was held for.
+-->
+
 <html>
-<head><title>404 Not Found</title></head>
-<body bgcolor="white">
-<center><h1>404 Not Found</h1></center>
-<hr><center>nginx/1.14.2</center>
+
+<title> concentric.html </title>
+
+<!-- style attributes make screen unscrollable -->
+<body style="margin: 0; height: 100%; overflow: hidden;">
+
+<noscript>Enable JavaScript to use this page.</noscript>
+
+<!-- coords/position-setting needed for heading to be above canvas -->
+<h1 id="h" style="z-index: 2; top: 0; left: 0; position: absolute;">
+Click and hold to make circles. <a href="https://smlavine.com">Back</a>
+</h1>
+
+<!-- Stores circles. -->
+<canvas id="final"
+style="position: absolute;
+top: 0px;
+left: 0px;">
+</canvas>
+
+<script>
+// Stretch canvases across entire page.
+var f = document.getElementById("final");
+f.width = window.innerWidth;
+f.height = window.innerHeight;
+</script>
+
+<script>
+var fctx = f.getContext("2d");
+fctx.lineWidth = "2";
+
+var radius = 4;
+// draws circle
+function drawTemplate(e) {
+  fctx.beginPath();
+  fctx.arc(e.clientX, e.clientY, radius, 0, 2 * Math.PI);
+  fctx.stroke();
+  radius += 4;
+};
+
+// holds interval for drawing timer
+var int = null; // null means there is not existing interval
+
+// repeatedly draw the circle
+f.onmousedown = function(e) {
+  if (int === null) // only create an interval if there isn't one
+  int = setInterval(drawTemplate, 30, e);
+};
+
+// stop drawing
+f.onmouseup = function(e) {
+  if (int !== null) {
+    clearInterval(int);
+    int = null;
+    radius = 4; // reset radius
+  }
+};
+
+</script>
+
 </body>
+
 </html>
