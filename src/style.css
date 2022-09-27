@@ -6,12 +6,6 @@ body {
   text-align: center;
 }
 
-@media (max-width: 700px) {
-  body {
-    width: 85%;
-  }
-}
-
 h3#last-updated {
   margin: 1%;
 }
@@ -48,12 +42,6 @@ main#blurb {
   width: 50%;
 }
 
-@media (max-width: 700px) {
-  main#blurb {
-    width: 85%;
-  }
-}
-
 pre {
   display: inline-block;
   text-align: left;
@@ -66,3 +54,14 @@ ul {
 ul.links {
   display: inline-block;
 }
+
+@media (max-aspect-ratio: 0.85) {
+  body {
+    width: 85%;
+  }
+
+  main#blurb {
+    width: 85%;
+  }
+}
+
