@@ -1,0 +1,20 @@
+image: alpine/edge
+triggers:
+  - action: email
+    condition: failure
+    to: Sebastian LaVine <mail@smlavine.com>
+packages:
+  - rsync
+sources:
+  - https://git.sr.ht/~smlavine/smlavine.com
+environment:
+  deploy: smlavine.com@smlavine.com
+secrets:
+  - 3c573235-c733-4364-aa13-ace484e096ec
+tasks:
+  - build: |
+      cd smlavine.com
+      make
+  - deploy: |
+      cd smlavine.com
+      make deploy
