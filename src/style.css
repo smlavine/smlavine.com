@@ -51,6 +51,6 @@ main.blurb {
   margin: 1%;
 }
 
-.link-list {
+ul.links {
   display: inline-block;
 }
