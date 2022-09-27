@@ -6,6 +6,20 @@ body {
   text-align: center;
 }
 
+h3#last-updated {
+  margin: 1%;
+}
+
+hr {
+  /* Different browsers respond to different attributes for this element.
+   * As per this StackOverflow answer:
+   * https://stackoverflow.com/questions/6382023/changing-the-color-of-an-hr-element/12399447#12399447
+   */
+  background-color: black;
+  border-color: black;
+  color: black;
+}
+
 html {
   background-color: lightblue;
 }
@@ -21,25 +35,6 @@ img {
   height: auto;
 }
 
-pre {
-  display: inline-block;
-  text-align: left;
-}
-
-ul {
-  text-align: left;
-}
-
-hr {
-  /* Different browsers respond to different attributes for this element.
-   * As per this StackOverflow answer:
-   * https://stackoverflow.com/questions/6382023/changing-the-color-of-an-hr-element/12399447#12399447
-   */
-  background-color: black;
-  border-color: black;
-  color: black;
-}
-
 main#blurb {
   text-align: center;
   align: center;
@@ -47,8 +42,13 @@ main#blurb {
   width: 50%;
 }
 
-h3#last-updated {
-  margin: 1%;
+pre {
+  display: inline-block;
+  text-align: left;
+}
+
+ul {
+  text-align: left;
 }
 
 ul.links {
