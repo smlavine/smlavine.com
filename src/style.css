@@ -58,6 +58,7 @@ ul.links {
 @media (max-aspect-ratio: 0.85) {
   body {
     width: 85%;
+    font-size: large;
   }
 
   main#blurb {
