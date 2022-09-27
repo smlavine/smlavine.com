@@ -40,7 +40,7 @@ hr {
   color: black;
 }
 
-main.blurb {
+main#blurb {
   text-align: center;
   align: center;
   margin: auto;
