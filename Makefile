@@ -7,13 +7,13 @@ SRC = \
 	src/./public.txt \
 	src/./style.css \
 	src/./pages/bible.html \
+	src/./pages/paige.html \
+	src/./pages/pgp.html \
+	src/./pages/rosie.html \
+	src/./pages/style.css \
 	src/./pages/canvas2019/concentric.html \
 	src/./pages/canvas2019/drop.html \
-	src/./pages/canvas2019/lsd.html \
-	src/./pages/paige.html \
-	src/./pages/rosie.html \
-	src/./pages/pgp.html \
-	src/./pages/style.css
+	src/./pages/canvas2019/lsd.html
 
 BUILDDIR = build/
 
