@@ -7,9 +7,9 @@ SRC = \
 	src/./public.txt \
 	src/./style.css \
 	src/./pages/bible.html \
-	src/./pages/concentric.html \
-	src/./pages/drop.html \
-	src/./pages/lsd.html \
+	src/./pages/canvas2019/concentric.html \
+	src/./pages/canvas2019/drop.html \
+	src/./pages/canvas2019/lsd.html \
 	src/./pages/paige.html \
 	src/./pages/rosie.html \
 	src/./pages/pgp.html \
