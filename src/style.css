@@ -1,13 +1,26 @@
-body {
+/* https://www.swyx.io/css-100-bytes */
+html {
+  max-width: 70ch;
+  padding: 3em 1em;
   margin: auto;
-  margin-top: 4%;
-  align: center;
-  width: 65%;
+  line-height: 1.5;
+
+  background-color: lightblue;
+}
+
+p#blurb {
   text-align: center;
 }
 
-h3#last-updated {
-  margin: 1%;
+ul.links {
+  display: inline-block;
+}
+
+img {
+  max-width: 480px;
+  max-height: 360px;
+  width: auto;
+  height: auto;
 }
 
 hr {
@@ -20,50 +33,6 @@ hr {
   color: black;
 }
 
-html {
-  background-color: lightblue;
-}
-
-img {
-  align: center;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 480px;
-  max-height: 360px;
-  width: auto;
-  height: auto;
-}
-
-main#blurb {
-  text-align: center;
-  align: center;
-  margin: auto;
-  width: 50%;
-}
-
-pre {
-  display: inline-block;
-  text-align: left;
-}
-
-ul {
-  text-align: left;
-}
-
-ul.links {
-  display: inline-block;
-}
-
-@media (max-aspect-ratio: 0.85) {
-  body {
-    width: 85%;
-    font-size: large;
-  }
-
-  main#blurb {
-    width: 85%;
-  }
 footer {
   font-weight: bold;
 }
