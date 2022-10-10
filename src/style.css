@@ -1,11 +1,14 @@
 /* https://www.swyx.io/css-100-bytes */
 html {
+  background-color: lightblue;
+}
+
+main {
   max-width: 70ch;
   padding: 3em 1em;
+  padding-bottom: 0; /* Reduce space between <main> and <footer> */
   margin: auto;
   line-height: 1.5;
-
-  background-color: lightblue;
 }
 
 p#blurb {
@@ -40,4 +43,6 @@ hr {
 
 footer {
   font-weight: bold;
+  margin: auto;
+  max-width: 70ch;
 }
