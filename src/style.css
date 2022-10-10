@@ -64,4 +64,6 @@ ul.links {
   main#blurb {
     width: 85%;
   }
+footer {
+  font-weight: bold;
 }
