@@ -4,7 +4,6 @@
 # to $(BUILDDIR). See rsync(1), -R.
 SRC = \
 	src/./index.html \
-	src/./pgp.html \
 	src/./public.txt \
 	src/./style.css \
 	src/./pages/bible.html \
@@ -13,6 +12,7 @@ SRC = \
 	src/./pages/lsd.html \
 	src/./pages/paige.html \
 	src/./pages/rosie.html \
+	src/./pages/pgp.html \
 
 BUILDDIR = build/
 
