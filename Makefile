@@ -13,6 +13,7 @@ SRC = \
 	src/./pages/paige.html \
 	src/./pages/rosie.html \
 	src/./pages/pgp.html \
+	src/./pages/style.css
 
 BUILDDIR = build/
 
