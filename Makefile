@@ -10,12 +10,9 @@ SRC = \
 	src/./pages/bible.html \
 	src/./pages/concentric.html \
 	src/./pages/drop.html \
-	src/./pages/experts.html \
 	src/./pages/lsd.html \
-	src/./pages/musical.html \
 	src/./pages/paige.html \
 	src/./pages/rosie.html \
-	src/./pages/singing.html \
 
 BUILDDIR = build/
 
