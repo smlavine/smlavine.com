@@ -31,6 +31,11 @@ img {
   margin-right: auto;
 }
 
+div.album > img {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 hr {
   /* Different browsers respond to different attributes for this element.
    * As per this StackOverflow answer:
