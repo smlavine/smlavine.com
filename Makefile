@@ -29,6 +29,9 @@ $(BUILDDIR): $(SRC)
 	@# Later, might include preprocessing/compilation steps
 	rsync -R $(SRC) $(BUILDDIR)
 
+accessibility: $(BUILDDIR)
+	./check-accessibility $(BUILDDIR)
+
 deploy: $(BUILDDIR)
 	@if [ ! "$(deploy)" ]; then echo 'Error: deploy must be set.'; exit 1; fi
 	rsync --rsh='ssh -o StrictHostKeyChecking=no' -r $(BUILDDIR) '$(deploy):$(REMOTEPATH)'
@@ -36,4 +39,4 @@ deploy: $(BUILDDIR)
 clean:
 	rm -rf $(BUILDDIR)
 
-.PHONY: deploy clean
+.PHONY: accessibility deploy clean
