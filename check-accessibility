@@ -6,8 +6,6 @@ if [ "$#" -ne 1 ]; then
 	exit 1
 fi
 
-cd "$1"
-
 # Make sure all images have associated alt text.
 if find "$1" -type f -exec grep -n '<img.*/>' '{}' '+' | grep -v '<img.*alt=.*/>'; then
 	echo 'All images must have associated alt-text.' >&2
