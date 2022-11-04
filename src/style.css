@@ -16,18 +16,18 @@ p#blurb {
   text-align: center;
 }
 
-section#blog-entries {
+section#blog-posts {
   background-color: skyblue;
   padding: 0 1em;
   border: 2px solid cornflowerblue;
   border-radius: 5px;
 }
 
-section#blog-entries > h2 {
+section#blog-posts > h2 {
   text-decoration: underline;
 }
 
-section#blog-entries > ul > li > span.date {
+section#blog-posts > ul > li > span.date {
   float: right;
 }
 
