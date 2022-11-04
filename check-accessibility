@@ -1,0 +1,13 @@
+#!/bin/sh
+# Should be provided $(BUILDDIR) from Makefile.
+
+if [ "$#" -ne 1 ]; then
+	echo 'usage: ./check-accessibility <dir>' >&2
+	exit 1
+fi
+
+# Make sure all images have associated alt text.
+if grep -Rn '<img.*/>' | grep -v '<img.*alt=.*/>'; then
+	echo 'All images must have associated alt-text.' >&2
+	exit 1
+fi
