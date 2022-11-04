@@ -6,6 +6,7 @@ SRC = \
 	src/./index.html \
 	src/./public.txt \
 	src/./style.css \
+	src/./blog/bible.html \
 	src/./pages/bible.html \
 	src/./pages/paige.html \
 	src/./pages/pgp.html \
