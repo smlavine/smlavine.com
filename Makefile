@@ -29,13 +29,11 @@ $(BUILDDIR): $(SRC)
 	@# Later, might include preprocessing/compilation steps
 	rsync -R $(SRC) $(BUILDDIR)
 
-build: $(BUILDDIR)
-
-deploy: build
+deploy: $(BUILDDIR)
 	@if [ ! "$(deploy)" ]; then echo 'Error: deploy must be set.'; exit 1; fi
 	rsync --rsh='ssh -o StrictHostKeyChecking=no' -r $(BUILDDIR) '$(deploy):$(REMOTEPATH)'
 
 clean:
 	rm -rf $(BUILDDIR)
 
-.PHONY: build deploy clean
+.PHONY: deploy clean
