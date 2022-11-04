@@ -17,9 +17,9 @@ p#blurb {
 }
 
 section#blog-entries {
-  background-color: cornflowerblue;
+  background-color: skyblue;
   padding: 0 1em;
-  border: 2px solid grey;
+  border: 2px solid cornflowerblue;
   border-radius: 5px;
 }
 
