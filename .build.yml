@@ -15,9 +15,9 @@ tasks:
   - build: |
       cd smlavine.com
       make
-  - accessibility: |
+  - check: |
       cd smlavine.com
-      make accessibility
+      make check
   - deploy: |
       cd smlavine.com
       make deploy
