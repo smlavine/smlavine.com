@@ -23,13 +23,15 @@ BUILDDIR = build/
 
 REMOTEPATH = /var/www/smlavine.com
 
+all: $(BUILDDIR)
+
 $(BUILDDIR): $(SRC)
 	@if [ -d "$(BUILDDIR)" ]; then rm -r $(BUILDDIR); fi
 	mkdir $(BUILDDIR)
 	@# Later, might include preprocessing/compilation steps
 	rsync -R $(SRC) $(BUILDDIR)
 
-accessibility: $(BUILDDIR)
+check: $(BUILDDIR)
 	./check-accessibility $(BUILDDIR)
 
 deploy: $(BUILDDIR)
@@ -39,4 +41,4 @@ deploy: $(BUILDDIR)
 clean:
 	rm -rf $(BUILDDIR)
 
-.PHONY: accessibility deploy clean
+.PHONY: check deploy clean
