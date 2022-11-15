@@ -19,7 +19,7 @@ SRC = \
 	src/./pages/canvas2019/drop.html \
 	src/./pages/canvas2019/lsd.html
 
-BUILDDIR = build/
+BUILDDIR = site/
 
 REMOTEPATH = /var/www/smlavine.com
 
