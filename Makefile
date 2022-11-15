@@ -1,5 +1,13 @@
 .POSIX:
 
+BUILDDIR = site
+
+REMOTEPATH = /var/www/smlavine.com
+
+####
+
+DIRS = $(BUILDDIR) $(BUILDDIR)/blog $(BUILDDIR)/pages $(BUILDDIR)/pages/canvas2019
+
 # Specifying '/./' in the path strips the 'src/' part of the path when copying
 # to $(BUILDDIR). See rsync(1), -R.
 SRC = \
@@ -19,26 +27,22 @@ SRC = \
 	src/./pages/canvas2019/drop.html \
 	src/./pages/canvas2019/lsd.html
 
-BUILDDIR = site/
+all: $(DIRS) copies
 
-REMOTEPATH = /var/www/smlavine.com
+copies: copies.mk
+	make -f copies.mk
 
-all: $(BUILDDIR)
+copies.mk: build/copies.pl build/copies.txt
+	build/copies.pl $(BUILDDIR) < build/copies.txt > copies.mk
 
-$(BUILDDIR): $(SRC)
-	@if [ -d "$(BUILDDIR)" ]; then rm -r $(BUILDDIR); fi
-	mkdir $(BUILDDIR)
-	@# Later, might include preprocessing/compilation steps
-	rsync -R $(SRC) $(BUILDDIR)
-
-check: $(BUILDDIR)
-	./check-accessibility $(BUILDDIR)
+$(DIRS):
+	if ! [ -d $@ ]; then mkdir $@; fi
 
 deploy: $(BUILDDIR)
 	@if [ ! "$(deploy)" ]; then echo 'Error: deploy must be set.'; exit 1; fi
 	rsync --rsh='ssh -o StrictHostKeyChecking=no' -r $(BUILDDIR) '$(deploy):$(REMOTEPATH)'
 
 clean:
-	rm -rf $(BUILDDIR)
+	rm -rf $(BUILDDIR) copies.mk
 
-.PHONY: check deploy clean
+.PHONY: copies check deploy clean
