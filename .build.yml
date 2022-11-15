@@ -4,6 +4,7 @@ triggers:
     condition: failure
     to: Sebastian LaVine <mail@smlavine.com>
 packages:
+  - dart-sass
   - perl
   - rsync
 sources:
