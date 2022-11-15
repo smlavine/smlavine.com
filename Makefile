@@ -29,14 +29,14 @@ SRC = \
 
 all: $(DIRS) copies
 
+$(DIRS):
+	if ! [ -d $@ ]; then mkdir $@; fi
+
 copies: copies.mk
 	make -f copies.mk
 
 copies.mk: build/copies.pl build/copies.txt
 	build/copies.pl $(BUILDDIR) < build/copies.txt > copies.mk
-
-$(DIRS):
-	if ! [ -d $@ ]; then mkdir $@; fi
 
 deploy: $(BUILDDIR)
 	@if [ ! "$(deploy)" ]; then echo 'Error: deploy must be set.'; exit 1; fi
