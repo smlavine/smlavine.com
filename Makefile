@@ -47,6 +47,9 @@ $(BUILDDIR)/pages/style.css: src/main.scss src/pages/style.scss
 $(BUILDDIR)/blog/style.css: src/main.scss src/blog/style.scss
 	sass --no-source-map src/blog/style.scss $@
 
+check: $(BUILDDIR)
+	./check-accessibility $(BUILDDIR)
+
 deploy: $(BUILDDIR)
 	@if [ ! "$(deploy)" ]; then echo 'Error: deploy must be set.'; exit 1; fi
 	@# The slash at the end of $(BUILDDIR) is needed; see 81076bc.
