@@ -8,25 +8,6 @@ REMOTEPATH = /var/www/smlavine.com
 
 DIRS = $(BUILDDIR) $(BUILDDIR)/blog $(BUILDDIR)/pages $(BUILDDIR)/pages/canvas2019
 
-# Specifying '/./' in the path strips the 'src/' part of the path when copying
-# to $(BUILDDIR). See rsync(1), -R.
-SRC = \
-	src/./index.html \
-	src/./public.txt \
-	src/./style.css \
-	src/./blog/bible.html \
-	src/./blog/index.html \
-	src/./blog/style.css \
-	src/./pages/bible.html \
-	src/./pages/paige.html \
-	src/./pages/pgp.html \
-	src/./pages/rosie.html \
-	src/./pages/style.css \
-	src/./pages/thing.html \
-	src/./pages/canvas2019/concentric.html \
-	src/./pages/canvas2019/drop.html \
-	src/./pages/canvas2019/lsd.html
-
 all: $(DIRS) copies $(BUILDDIR)/style.css $(BUILDDIR)/pages/style.css $(BUILDDIR)/blog/style.css
 
 $(DIRS):
