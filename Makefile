@@ -49,7 +49,7 @@ $(BUILDDIR)/blog/style.css: src/main.scss src/blog/style.scss
 
 deploy: $(BUILDDIR)
 	@if [ ! "$(deploy)" ]; then echo 'Error: deploy must be set.'; exit 1; fi
-	rsync --rsh='ssh -o StrictHostKeyChecking=no' -r $(BUILDDIR) '$(deploy):$(REMOTEPATH)'
+	rsync --rsh='ssh -o StrictHostKeyChecking=no' -r $(BUILDDIR)/ '$(deploy):$(REMOTEPATH)'
 
 clean:
 	rm -rf $(BUILDDIR) copies.mk
