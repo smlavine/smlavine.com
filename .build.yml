@@ -7,8 +7,6 @@ packages:
   - dart-sass
   - perl
   - rsync
-sources:
-  - https://git.sr.ht/~smlavine/smlavine.com
 environment:
   deploy: smlavine.com@smlavine.com
 secrets:
