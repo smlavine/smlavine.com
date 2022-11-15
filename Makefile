@@ -27,7 +27,7 @@ SRC = \
 	src/./pages/canvas2019/drop.html \
 	src/./pages/canvas2019/lsd.html
 
-all: $(DIRS) copies
+all: $(DIRS) copies $(BUILDDIR)/style.css $(BUILDDIR)/pages/style.css $(BUILDDIR)/blog/style.css
 
 $(DIRS):
 	if ! [ -d $@ ]; then mkdir $@; fi
@@ -37,6 +37,15 @@ copies: copies.mk
 
 copies.mk: build/copies.pl build/copies.txt
 	build/copies.pl $(BUILDDIR) < build/copies.txt > copies.mk
+
+$(BUILDDIR)/style.css: src/main.scss src/style.scss
+	sass --no-source-map src/style.scss $@
+
+$(BUILDDIR)/pages/style.css: src/main.scss src/pages/style.scss
+	sass --no-source-map src/pages/style.scss $@
+
+$(BUILDDIR)/blog/style.css: src/main.scss src/blog/style.scss
+	sass --no-source-map src/blog/style.scss $@
 
 deploy: $(BUILDDIR)
 	@if [ ! "$(deploy)" ]; then echo 'Error: deploy must be set.'; exit 1; fi
