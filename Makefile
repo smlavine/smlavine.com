@@ -49,6 +49,7 @@ $(BUILDDIR)/blog/style.css: src/main.scss src/blog/style.scss
 
 deploy: $(BUILDDIR)
 	@if [ ! "$(deploy)" ]; then echo 'Error: deploy must be set.'; exit 1; fi
+	@# The slash at the end of $(BUILDDIR) is needed; see 81076bc.
 	rsync --rsh='ssh -o StrictHostKeyChecking=no' -r $(BUILDDIR)/ '$(deploy):$(REMOTEPATH)'
 
 clean:
