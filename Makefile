@@ -1,6 +1,6 @@
 .POSIX:
 
-BUILDDIR = build
+BUILDDIR = site
 
 REMOTEPATH = /var/www/smlavine.com
 
@@ -16,7 +16,7 @@ $(DIRS):
 copies: copies.mk
 	make -f copies.mk
 
-copies.mk: copies.pl copies.txt
+copies.mk: copies.pl copies.txt $(DIRS)
 	./copies.pl $(BUILDDIR) < copies.txt > copies.mk
 
 $(BUILDDIR)/style.css: src/main.scss src/style.scss
