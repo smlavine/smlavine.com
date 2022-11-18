@@ -10,8 +10,6 @@ DIRS = $(BUILDDIR) $(BUILDDIR)/blog $(BUILDDIR)/pages $(BUILDDIR)/pages/canvas20
 
 GOSRC = blogbuilder/blogbuilder.go
 
-BLOGPAGES = $(BUILDDIR)/index.html $(BUILDDIR)/blog/index.html
-
 POSTS = src/blog/bible.md
 
 all: \
@@ -45,9 +43,7 @@ go: .bin/blogbuilder
 .bin/blogbuilder: $(GOSRC)
 	go build -o .bin/blogbuilder ./blogbuilder
 
-blog: go $(DIRS) $(BLOGPAGES)
-
-$(BLOGPAGES): $(POSTS)
+blog: go $(DIRS) $(POSTS)
 	.bin/blogbuilder $(POSTS)
 
 check: accessibility go-test
