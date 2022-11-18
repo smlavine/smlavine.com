@@ -10,12 +10,17 @@ DIRS = $(BUILDDIR) $(BUILDDIR)/blog $(BUILDDIR)/pages $(BUILDDIR)/pages/canvas20
 
 GOSRC = blogbuilder/blogbuilder.go
 
+BLOGPAGES = $(BUILDDIR)/index.html $(BUILDDIR)/blog/index.html
+
+POSTS = src/blog/bible.md
+
 all: \
 	$(DIRS) \
 	copies \
 	$(BUILDDIR)/blog/style.css \
 	$(BUILDDIR)/pages/style.css \
 	$(BUILDDIR)/style.css \
+	blog \
 
 $(DIRS):
 	if ! [ -d $@ ]; then mkdir $@; fi
@@ -40,6 +45,11 @@ go: .bin/blogbuilder
 .bin/blogbuilder: $(GOSRC)
 	go build -o .bin/blogbuilder ./blogbuilder
 
+blog: go $(DIRS) $(BLOGPAGES)
+
+$(BLOGPAGES): $(POSTS)
+	.bin/blogbuilder $(POSTS)
+
 check: accessibility go-test
 
 accessibility: all
@@ -56,4 +66,4 @@ deploy: $(BUILDDIR)
 clean:
 	rm -rf $(BUILDDIR) copies.mk .bin
 
-.PHONY: copies go go-test accessibility check deploy clean
+.PHONY: copies go blog go-test accessibility check deploy clean
