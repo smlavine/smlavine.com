@@ -20,15 +20,16 @@ type BlogPost struct {
 	Title   string `yaml:"title"`
 	Date    string `yaml:"date"`
 	Updated string `yaml:"last-updated"`
-	Header  string
-	Article string
-	Footer  string
+	Text    string // The entire blog page, including header and footer.
 }
 
 func (post *BlogPost) String() string {
-	return post.Header + post.Article + post.Footer
+	return post.Text
 }
 
+// Reads a blog post written in Markdown, and turns it into a BlogPost. The
+// YAML frontmatter is parsed, and the article text is combined with the
+// text of the header and footer to produce a full HTML page.
 func GenBlogPost(header, footer, filename string) (*BlogPost, error) {
 	var post BlogPost
 
@@ -45,14 +46,12 @@ func GenBlogPost(header, footer, filename string) (*BlogPost, error) {
 	f.Close()
 
 	// TODO: header, footer. html template
-	post.Header = header
-	post.Footer = footer
 
 	var htmlBuilder strings.Builder
 	if err = md.Convert(article, &htmlBuilder); err != nil {
 		return nil, err
 	}
-	post.Article = htmlBuilder.String()
+	post.Text = header + htmlBuilder.String() + footer
 
 	return &post, nil
 }
