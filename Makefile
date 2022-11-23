@@ -10,7 +10,7 @@ DIRS = $(BUILDDIR) $(BUILDDIR)/blog $(BUILDDIR)/pages $(BUILDDIR)/pages/canvas20
 
 GOSRC = blogbuilder/blogbuilder.go
 
-POSTS = src/blog/bible.md
+POSTS = src/blog/bible.md src/blog/syncthing.md
 
 all: \
 	$(DIRS) \
