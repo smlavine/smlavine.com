@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"sort"
 	"strings"
 
 	"github.com/adrg/frontmatter"
@@ -56,22 +57,62 @@ func GenBlogPost(header, footer, filename string) (*BlogPost, error) {
 	return &post, nil
 }
 
-func main() {
-	post, err := GenBlogPost("<title>Why bears suck</title>", "<hr><hr><hr>", "src/blog/bible.md")
+type Blog []*BlogPost
+
+// Compiles Markdown blog posts to HTML and combines them with the given
+// header and footer templates, and fills in the site index file template and
+// the blog index file template.
+func BuildBlog(
+	indexPath, blogIndexPath, headerPath, footerPath string,
+	postPaths ...string,
+) error {
+	// TODO: headerPath, footerPath => html/template
+	header, err := os.ReadFile(headerPath)
 	if err != nil {
-		panic(err)
+		return err
+	}
+	footer, err := os.ReadFile(footerPath)
+	if err != nil {
+		return err
 	}
 
-	fmt.Print(post)
+	blog := make(Blog, 0, len(postPaths))
+	for _, postPath := range postPaths {
+		newPost, err := GenBlogPost(string(header), string(footer), postPath)
+		if err != nil {
+			return err
+		}
+		// Insert newPost into posts such that posts is sorted
+		// by descending BlogPost.Date.
+		insertionIndex := sort.Search(len(blog), func(i int) bool {
+			// Because Dates must be in the form YYYY-MM-DD, we
+			// can accurately compare them like so.
+			return blog[i].Date <= newPost.Date
+		})
+		blog = append(blog, nil)
+		copy(blog[insertionIndex+1:], blog[insertionIndex:])
+		blog[insertionIndex] = newPost
+	}
+
+	// TODO: write to site files
+
+	// TODO: write tests to guarantee order of files by date
+	for _, post := range blog {
+		fmt.Println(post.Date)
+	}
+
+	return nil
 }
 
-//---
-//title: KJV Bible pictures
-//date: 2022-02-23
-//last-updated: 2022-02-23
-//---
-//
-//Here are some pictures of a little King James Bible I got at a thrift
-//store a few years ago for a dollar.
-//
-//
+func main() {
+	err := BuildBlog("src/index.html",
+		"src/blog/index.html",
+		"src/blog/header.html",
+		"src/blog/footer.html",
+		os.Args[1:]...,
+	)
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "%v\n", err)
+	}
+}
