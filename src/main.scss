@@ -12,8 +12,34 @@ main {
   line-height: 1.5;
 }
 
-p#blurb {
+.blurb {
+  display: flex;
+}
+
+$blurb-width: 768px;
+
+@media (max-width: $blurb-width) {
+  .blurb {
+    flex-direction: column-reverse;
+  }
+}
+
+.blurb > section {
   text-align: center;
+  flex-basis: 50%;
+}
+
+.blurb > section > h1 {
+  /* Despite being in a section partially styling reasons, I want this heading
+   * to have the same size as page-level h1s. */
+  font-size: 2em;
+  margin-bottom: 0;
+}
+
+.blurb > img {
+  flex-basis: 50%;
+  max-width: 40%;
+  max-height: auto;
 }
 
 section#blog-posts {
@@ -24,6 +50,7 @@ section#blog-posts {
 }
 
 section#blog-posts > h2 {
+  font-size: 1.5em;
 }
 
 section#blog-posts > ul > li > span.date {
