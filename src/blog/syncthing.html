@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=0.7">
+<title>Setting up Syncthing</title>
+<link rel="shortcut icon" href="https://smlavine.com/images/favicon.jpg"/>
+<link rel="stylesheet" type="text/css" href="/blog/style.css"/>
+</head>
+
+<body>
+
+<main>
+
+<h1>Setting up Syncthing</h1>
+<span id="publication-date">2022-11-22</span>
+
+<article>
+<p>For a while now I've wanted to set up Syncthing to sync music and
+schoolwork between my laptop and my desktop. Getting it up and running was as
+simple as <code>sudo pacman -Syu syncthing</code> on my two computers,
+following <a href="https://docs.syncthing.net/intro/getting-started.html">this
+guide</a>, and clicking a few buttons. Easy! The few bits of configuration I
+did in the GUI are:</p>
+
+<ul>
+<li>Enabled password login</li>
+<li>Typed in my desktop's device ID</li>
+<li>Played around with the Default Folder to make sure that it was working</li>
+<li>Added the folders I wanted -- <code>Documents/</code> and <code>Media/</code></li>
+<li>Allowed my devices to share those folders with each other</li>
+</ul>
+
+<p>And that's it. It started syncing.</p>
+
+<p>I started and enabled the systemd service to have Syncthing start up
+automatically on my laptop, but it used a bit too much CPU for me to
+have it running all the time on my laptop.</p>
+
+<p>Something else I noticed is that the firefox running the web GUI was
+eating up a <em>lot</em> of memory and CPU on my laptop -- much more so than
+Syncthing itself. Of course, the syncing happens fine without that
+happening, so that shouldn't be too big of a deal.</p>
+
+<p>
+<img src="https://smlavine.com/images/syncthing/webgui.png" alt="A screenshot of the Syncthing web GUI. There are two columns: on the left, one labeled &quot;Folders (2)&quot; lists &quot;Documents&quot; and &quot;Media&quot;. Media is &quot;Up to Date&quot;, but &quot;Documents&quot; is still &quot;Syncing (94%, 543 MiB)&quot;. On the right, the column is labeled &quot;This Device&quot; and lists information about the device &quot;archlinux-x220&quot;: Download Rate, Upload Rate, Local State (showing ~85.3 GiB of data), and other diagnostic information. Below that section is a section labeled &quot;Remote Devices&quot; showing that &quot;archlinux-white&quot; is &quot;Up to Date&quot;." title="Syncing in progress.">
+</p>
+
+<p>Next, I turned to syncing music with my Android phone. I installed
+Syncthing through [F-Droid][fdroid], and a few taps later, I was ready
+to go.</p>
+
+<p>One problem is that my media library is very large -- more than 75GB.
+But I really only want a subset of this available on my phone: my
+favorite music. So, I created a Syncthing Folder of the subdirectory
+<code>Media/music/mine</code>, which is much smaller:</p>
+
+<pre><code>$ j mine
+/home/sebastian/Media/music/mine
+$ dh
+4.0K    ./.stfolder
+8.0K    ./.thumbnails
+39M     ./The Seatbelts
+49M     ./Chali 2na
+51M     ./Valve Studio Orchestra
+60M     ./C2C
+68M     ./Tally Hall
+95M     ./Toby Fox
+106M    ./Lin-Manuel Miranda
+119M    ./Parov Stelar
+172M    ./Ghost
+174M    ./Charlotte Church
+184M    ./Hideki Naganuma
+196M    ./Gustav Holst
+198M    ./Queen
+205M    ./Spiralmouth
+229M    ./George Gershwin
+258M    ./Django Reinhardt
+287M    ./Camelot
+390M    ./Tchaikovsky
+396M    ./Yes
+488M    ./Lemaitre
+496M    ./ABBA
+1.2G    ./Caravan Palace
+8.8G    ./The Beatles
+15G     .
+</code></pre>
+
+<p>Hmm. The Beatles are still taking up a lot of space, because they are in
+FLAC. Anything else I can do about that?</p>
+
+<pre><code>$ cd The\ Beatles
+$ dh
+182M    ./Love
+8.7G    ./The Beatles - Stereo and Mono Box Sets + Extras [FLAC]
+8.8G    .
+$ cd The\ Beatles\ -\ Stereo\ and\ Mono\ Box\ Sets\ +\ Extras\ \[FLAC\]/
+$ dh
+2.0G    ./Extras
+2.5G    ./The Beatles in Mono
+4.3G    ./The Beatles Stereo Box Set
+8.7G    .
+</code></pre>
+
+<p>I see. Well, I don't really need both the Mono <em>and</em> Stereo sets on my
+phone. Syncthing makes it simple to exlude a particular file or
+directory:</p>
+
+<p>
+<img src="https://smlavine.com/images/syncthing/ignore.png" alt="A screenshot of the Syncthing web GUI, showing a popup allowing us to &quot;Edit Folder (Media/music/mine)&quot;. In the center of the window is a field for ignore patterns, labelled &quot;Enter ignore patterns, one per line.&quot; In the field has been entered the path to the Beatles Mono set. Below that are some instructions on how to use a subset of regex to match patterns.">
+</p>
+
+<p>This is small enough to squeeze onto my phone's microSD card. I scan the
+QR code of my desktop's device ID, and the devices pair. I check a box
+to share <code>Media/music/mine</code> with my phone, and after accepting a popup
+and telling Syncthing Android where to put the folder, it begins
+syncing.</p>
+
+<p>
+<img src="https://smlavine.com/images/syncthing/android.png" alt="A screenshot of the Syncthing Android app. It shows that syncing of Media/music/mine is 11% complete. The app's interface is simple and clean." title="The Android app is very simple to use.">
+</p>
+
+<p>I am very pleased with using Syncthing so far. I look forward to
+potentially using it to sync other data I have, like uncommitted code
+between my laptop and desktop, or photos between my phone and computers.
+Have you used Syncthing? I'd love to hear your experiences with it.</p>
+
+<p><strong>P.S.</strong>: After finishing this post, I noticed that three random music
+files were not syncing properly. I tried adding new files, checking for
+free space, restarting Syncthing on both my phone and my computer, but
+still, these particular files would not sync. I &quot;solved&quot; the problem by
+adding them to my list of files to ignore for syncing, since luckily
+these weren't particular important music files to me. But the issue
+does raises concern over the tool's reliability.</p>
+</article>
+
+</main>
+
+<footer>
+<hr>
+<p>Last updated: 2022-11-22</p>
+<p><a href="../">↩︎ Back to Home</a></p>
+</footer>
+
+</body>
+</html>

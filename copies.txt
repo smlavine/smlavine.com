@@ -1,7 +1,9 @@
 src/index.html
 src/public.txt
-src/blog/index.html
+src/blog/2022.html
 src/blog/bible.html
+src/blog/index.html
+src/blog/syncthing.html
 src/pages/bible.html
 src/pages/paige.html
 src/pages/pgp.html
