@@ -81,6 +81,19 @@ img.unbordered {
   border: none;
 }
 
+pre {
+  background-color: #282a36;
+  color: white;
+
+  border: 2px solid grey;
+  border-radius: 5px;
+}
+
+span.ps1 {
+  font-weight: bold;
+  color: #50fa7b;
+}
+
 hr {
   /* Different browsers respond to different attributes for this element.
    * As per this StackOverflow answer:
