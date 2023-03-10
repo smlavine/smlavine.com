@@ -8,7 +8,7 @@ REMOTEPATH = /var/www/smlavine.com
 
 DIRS = $(BUILDDIR) $(BUILDDIR)/blog $(BUILDDIR)/pages $(BUILDDIR)/pages/canvas2019
 
-POSTS = src/blog/bible.md src/blog/syncthing.md
+GOSRC = blogbuilder/blogbuilder.go
 
 all: \
 	$(DIRS) \
@@ -36,10 +36,18 @@ $(BUILDDIR)/pages/style.css: src/main.scss src/pages/style.scss
 $(BUILDDIR)/blog/style.css: src/main.scss src/blog/style.scss
 	sass --no-source-map src/blog/style.scss $@
 
+go: .bin/blogbuilder
+
+.bin/blogbuilder: $(GOSRC)
+	go build -o .bin/blogbuilder ./blogbuilder
+
 check: accessibility go-test
 
 accessibility: all
 	./check-accessibility $(BUILDDIR)
+
+go-test:
+	go test ./blogbuilder
 
 deploy: $(BUILDDIR)
 	@if [ ! "$(deploy)" ]; then echo 'Error: deploy must be set.'; exit 1; fi
