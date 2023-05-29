@@ -1,3 +1,7 @@
+---
+date: 2022-07-22
+---
+
 I recently read [this intersting article][0] from Simon Willison about
 using GPT-3 to explain how code works. I decided to try it out with some
 code of my own. Below is a "conversation" I had with GPT-3 in the
