@@ -5,8 +5,10 @@ last-updated: 2022-11-22
 ---
 
 For a while now I've wanted to set up Syncthing to sync music and
-schoolwork between my laptop and my desktop. Getting it up and running was as
-simple as `sudo pacman -Syu syncthing` on my two computers, following [this
+schoolwork between my laptop and my desktop. But unlike my [system
+log][systemlog] entries, this has been so easy that there's really no
+need for a big writeup. Getting it up and running was as simple as `sudo
+pacman -Syu syncthing` on my two computers, following [this
 guide][syncthing-guide], and clicking a few buttons. Easy! The few bits
 of configuration I did in the GUI are:
 
