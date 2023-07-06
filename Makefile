@@ -6,24 +6,17 @@ REMOTEPATH = /var/www/smlavine.com
 
 ####
 
-DIRS = $(BUILDDIR) $(BUILDDIR)/blog $(BUILDDIR)/pages $(BUILDDIR)/pages/canvas2019
-
 all: \
-	$(DIRS) \
-	copies \
+	$(BUILDDIR) \
 	$(BUILDDIR)/blog/style.css \
 	$(BUILDDIR)/pages/style.css \
 	$(BUILDDIR)/style.css \
-	blog \
 
-$(DIRS):
-	if ! [ -d $@ ]; then mkdir $@; fi
-
-copies: copies.mk
-	make -f copies.mk
-
-copies.mk: copies.pl copies.txt $(DIRS)
-	./copies.pl $(BUILDDIR) < copies.txt > copies.mk
+# $(BUILDDIR) is seeded with the static files that are simply copied.
+# XXX: the build will fail if later build steps need a directory to exist that
+# doesn't exist in static
+$(BUILDDIR): static/
+	cp -r static $@
 
 $(BUILDDIR)/style.css: src/main.scss src/style.scss
 	sass --no-source-map src/style.scss $@
@@ -45,6 +38,6 @@ deploy: $(BUILDDIR)
 	rsync --rsh='ssh -o StrictHostKeyChecking=no' -r $(BUILDDIR)/ '$(deploy):$(REMOTEPATH)'
 
 clean:
-	rm -rf $(BUILDDIR) copies.mk
+	rm -rf $(BUILDDIR)
 
-.PHONY: copies blog accessibility check deploy clean
+.PHONY: all accessibility check deploy clean
