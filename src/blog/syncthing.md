@@ -1,7 +1,8 @@
 ---
 title: Setting up Syncthing
 date: 2022-11-22
-last-updated: 2022-11-22
+params:
+  last-updated: 2022-11-22
 ---
 
 For a while now I've wanted to set up Syncthing to sync music and

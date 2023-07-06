@@ -1,7 +1,8 @@
 ---
 title: KJV Bible pictures
 date: 2022-02-23
-last-updated: 2022-02-23
+params:
+  last-updated: 2022-02-23
 ---
 
 Here are some pictures of a little King James Bible I got at a thrift
