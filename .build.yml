@@ -5,7 +5,6 @@ triggers:
     to: Sebastian LaVine <mail@smlavine.com>
 packages:
   - dart-sass
-  - go
   - perl
   - rsync
 environment:
