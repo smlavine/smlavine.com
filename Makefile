@@ -1,6 +1,6 @@
 .POSIX:
 
-BUILDDIR = site
+BUILDDIR = public
 
 REMOTEPATH = /var/www/smlavine.com
 
