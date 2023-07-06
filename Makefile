@@ -15,6 +15,8 @@ all: \
 # $(BUILDDIR) is seeded with the static files that are simply copied.
 # XXX: the build will fail if later build steps need a directory to exist that
 # doesn't exist in static
+# XXX: $(BUILDDIR) doesn't depend on the CONTENTS of static/ so a `make -B` is
+# needed to force a rebuild of the site
 $(BUILDDIR): static/
 	cp -r static $@
 
