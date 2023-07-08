@@ -18,6 +18,176 @@
     </image>
 
     <item>
+      <title>2022</title>
+      <link>https://smlavine.com/blog/2022</link>
+      <guid isPermaLink="true">https://smlavine.com/blog/2022</guid>
+      <author>mail@smlavine.com (Sebastian LaVine)</author>
+      <pubDate>Sun, 01 Jan 2023 00:00:00 -0500</pubDate>
+      <description>&lt;p&gt;What a year.&lt;/p&gt;
+
+&lt;p&gt;At the end of last year, 2021, I felt that it had been the best year of
+my life yet. Unfortunately, I can't say the same about 2022.&lt;/p&gt;
+
+&lt;p&gt;I made a helpful chart to illustrate the highs and lows of my year:&lt;/p&gt;
+
+&lt;p&gt;
+&lt;img src=&quot;https://smlavine.com/images/2022.png&quot; alt=&quot;A volatile chart, entitled &amp;quot;2022: A subjective, emotionally biased look back&amp;quot;&quot;&gt;
+&lt;/p&gt;
+
+&lt;p&gt;2022 was a year of immense change. Who I lived with, where I lived, who
+I spent time with, who I worked with. It forced me to examine who I am
+at my core. What do I actually want to do with my life? Am I happy?&lt;/p&gt;
+
+&lt;p&gt;Reminiscing like this at the end of the year, looking bad at all of
+those dips in that chart, makes me feel like it was just a sucky year
+with no redeeming qualities. But that isn't true at all! The lows were
+the lowest I have ever experienced. But with some luck, they'll stay
+that way. I am very grateful for what I've got. I'm surrounded by some
+of the smartest, funniest, nicest, hardest-working people I know. I've
+got a new baby cousin. I've learned a lot, and I've still got a lot of
+life left to live.&lt;/p&gt;
+
+&lt;p&gt;Despite it all, 2022 was a &lt;a href=&quot;https://goodmoviefilm.com&quot;&gt;good moviefilm&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;2023 will be a year of opportunity. By the end of it, I will only have
+one semester of classes left before I graduate. I will have completed
+one semester of a co-op and I will be getting ready for two more. It's
+kind of sad, actually, just how fast this time is flying by. Yes, it's
+stressful, but so is the rest of the world. Never again in my life will
+I be surrounded by so many friends, or by so many clubs and people with
+whom I share interests. I'm going to live to the fullest while I still
+can.&lt;/p&gt;
+
+&lt;p&gt;I really have no clue at all what my life will look like a year from
+now. But to the person I know is reading this on December 31, 2023:
+I hope it all turned out okay.&lt;/p&gt;</description>
+    </item>
+
+    <item>
+      <title>Setting up Syncthing</title>
+      <link>https://smlavine.com/blog/syncthing</link>
+      <guid isPermaLink="true">https://smlavine.com/blog/syncthing</guid>
+      <author>mail@smlavine.com (Sebastian LaVine)</author>
+      <pubDate>Tue, 22 Nov 2022 00:00:00 -0500</pubDate>
+      <description>&lt;p&gt;For a while now I've wanted to set up Syncthing to sync music and
+schoolwork between my laptop and my desktop. Getting it up and running was as
+simple as &lt;code&gt;sudo pacman -Syu syncthing&lt;/code&gt; on my two computers,
+following &lt;a href=&quot;https://docs.syncthing.net/intro/getting-started.html&quot;&gt;this
+guide&lt;/a&gt;, and clicking a few buttons. Easy! The few bits of configuration I
+did in the GUI are:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Enabled password login&lt;/li&gt;
+&lt;li&gt;Typed in my desktop's device ID&lt;/li&gt;
+&lt;li&gt;Played around with the Default Folder to make sure that it was working&lt;/li&gt;
+&lt;li&gt;Added the folders I wanted -- &lt;code&gt;Documents/&lt;/code&gt; and &lt;code&gt;Media/&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Allowed my devices to share those folders with each other&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And that's it. It started syncing.&lt;/p&gt;
+
+&lt;p&gt;I started and enabled the systemd service to have Syncthing start up
+automatically on my laptop, but it used a bit too much CPU for me to
+have it running all the time on my laptop.&lt;/p&gt;
+
+&lt;p&gt;Something else I noticed is that the firefox running the web GUI was
+eating up a &lt;em&gt;lot&lt;/em&gt; of memory and CPU on my laptop -- much more so than
+Syncthing itself. Of course, the syncing happens fine without that
+happening, so that shouldn't be too big of a deal.&lt;/p&gt;
+
+&lt;p&gt;
+&lt;img src=&quot;https://smlavine.com/images/syncthing/webgui.png&quot; alt=&quot;A screenshot of the Syncthing web GUI. There are two columns: on the left, one labeled &amp;quot;Folders (2)&amp;quot; lists &amp;quot;Documents&amp;quot; and &amp;quot;Media&amp;quot;. Media is &amp;quot;Up to Date&amp;quot;, but &amp;quot;Documents&amp;quot; is still &amp;quot;Syncing (94%, 543 MiB)&amp;quot;. On the right, the column is labeled &amp;quot;This Device&amp;quot; and lists information about the device &amp;quot;archlinux-x220&amp;quot;: Download Rate, Upload Rate, Local State (showing ~85.3 GiB of data), and other diagnostic information. Below that section is a section labeled &amp;quot;Remote Devices&amp;quot; showing that &amp;quot;archlinux-white&amp;quot; is &amp;quot;Up to Date&amp;quot;.&quot; title=&quot;Syncing in progress.&quot;&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Next, I turned to syncing music with my Android phone. I installed
+Syncthing through [F-Droid][fdroid], and a few taps later, I was ready
+to go.&lt;/p&gt;
+
+&lt;p&gt;One problem is that my media library is very large -- more than 75GB.
+But I really only want a subset of this available on my phone: my
+favorite music. So, I created a Syncthing Folder of the subdirectory
+&lt;code&gt;Media/music/mine&lt;/code&gt;, which is much smaller:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;ps1&quot;&gt;$&lt;/span&gt; j mine
+/home/sebastian/Media/music/mine
+&lt;span class=&quot;ps1&quot;&gt;$&lt;/span&gt; dh
+4.0K    ./.stfolder
+8.0K    ./.thumbnails
+39M     ./The Seatbelts
+49M     ./Chali 2na
+51M     ./Valve Studio Orchestra
+60M     ./C2C
+68M     ./Tally Hall
+95M     ./Toby Fox
+106M    ./Lin-Manuel Miranda
+119M    ./Parov Stelar
+172M    ./Ghost
+174M    ./Charlotte Church
+184M    ./Hideki Naganuma
+196M    ./Gustav Holst
+198M    ./Queen
+205M    ./Spiralmouth
+229M    ./George Gershwin
+258M    ./Django Reinhardt
+287M    ./Camelot
+390M    ./Tchaikovsky
+396M    ./Yes
+488M    ./Lemaitre
+496M    ./ABBA
+1.2G    ./Caravan Palace
+8.8G    ./The Beatles
+15G     .
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Hmm. The Beatles are still taking up a lot of space, because they are in
+FLAC. Anything else I can do about that?&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;ps1&quot;&gt;$&lt;/span&gt; cd The\ Beatles
+&lt;span class=&quot;ps1&quot;&gt;$&lt;/span&gt; dh
+182M    ./Love
+8.7G    ./The Beatles - Stereo and Mono Box Sets + Extras [FLAC]
+8.8G    .
+&lt;span class=&quot;ps1&quot;&gt;$&lt;/span&gt; cd The\ Beatles\ -\ Stereo\ and\ Mono\ Box\ Sets\ +\ Extras\ \[FLAC\]/
+&lt;span class=&quot;ps1&quot;&gt;$&lt;/span&gt; dh
+2.0G    ./Extras
+2.5G    ./The Beatles in Mono
+4.3G    ./The Beatles Stereo Box Set
+8.7G    .
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I see. Well, I don't really need both the Mono &lt;em&gt;and&lt;/em&gt; Stereo sets on my
+phone. Syncthing makes it simple to exlude a particular file or
+directory:&lt;/p&gt;
+
+&lt;p&gt;
+&lt;img src=&quot;https://smlavine.com/images/syncthing/ignore.png&quot; alt=&quot;A screenshot of the Syncthing web GUI, showing a popup allowing us to &amp;quot;Edit Folder (Media/music/mine)&amp;quot;. In the center of the window is a field for ignore patterns, labelled &amp;quot;Enter ignore patterns, one per line.&amp;quot; In the field has been entered the path to the Beatles Mono set. Below that are some instructions on how to use a subset of regex to match patterns.&quot;&gt;
+&lt;/p&gt;
+
+&lt;p&gt;This is small enough to squeeze onto my phone's microSD card. I scan the
+QR code of my desktop's device ID, and the devices pair. I check a box
+to share &lt;code&gt;Media/music/mine&lt;/code&gt; with my phone, and after accepting a popup
+and telling Syncthing Android where to put the folder, it begins
+syncing.&lt;/p&gt;
+
+&lt;p&gt;
+&lt;img src=&quot;https://smlavine.com/images/syncthing/android.png&quot; alt=&quot;A screenshot of the Syncthing Android app. It shows that syncing of Media/music/mine is 11% complete. The app's interface is simple and clean.&quot; title=&quot;The Android app is very simple to use.&quot;&gt;
+&lt;/p&gt;
+
+&lt;p&gt;I am very pleased with using Syncthing so far. I look forward to
+potentially using it to sync other data I have, like uncommitted code
+between my laptop and desktop, or photos between my phone and computers.
+Have you used Syncthing? I'd love to hear your experiences with it.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;P.S.&lt;/strong&gt;: After finishing this post, I noticed that three random music
+files were not syncing properly. I tried adding new files, checking for
+free space, restarting Syncthing on both my phone and my computer, but
+still, these particular files would not sync. I &amp;quot;solved&amp;quot; the problem by
+adding them to my list of files to ignore for syncing, since luckily
+these weren't particular important music files to me. But the issue
+does raises concern over the tool's reliability.&lt;/p&gt;</description>
+    </item>
+
+    <item>
       <title>KJV Bible pictures</title>
       <link>https://smlavine.com/blog/bible</link>
       <guid isPermaLink="true">https://smlavine.com/blog/bible</guid>
@@ -42,6 +212,5 @@ looked on Google Maps, but the house has been demolished.&lt;/p&gt;
 this than me, but I think I prefer the text of the KJV as opposed to more modern
         translations. It just feels more... &lt;i&gt;Bible-y&lt;/i&gt;, you know?&lt;/p&gt;</description>
     </item>
-
   </channel>
 </rss>
