@@ -9,7 +9,7 @@
     <copyright>Copyright (C) 2022-2023 Sebastian LaVine</copyright>
     <managingEditor>mail@smlavine.com (Sebastian LaVine)</managingEditor>
     <webMaster>mail@smlavine.com (Sebastian LaVine)</webMaster>
-    <pubDate>Fri, 07 Jul 2023 22:05:52 -0400</pubDate>
+    <pubDate>Fri, 07 Jul 2023 22:34:14 -0400</pubDate>
     <docs>https://cyber.harvard.edu/rss/rss.html</docs>
     <image>
       <url>https://smlavine.com/images/favicon.jpg</url>
@@ -21,8 +21,8 @@
       <title>2022</title>
       <link>https://smlavine.com/blog/2022</link>
       <guid isPermaLink="true">https://smlavine.com/blog/2022</guid>
-      <author>mail@smlavine.com (Sebastian LaVine)</author>
-      <pubDate>Sun, 01 Jan 2023 00:00:00 -0500</pubDate>
+      <author>Sebastian LaVine</author>
+      <pubDate>Sun, 01 Jan 2023</pubDate>
       <description>&lt;p&gt;What a year.&lt;/p&gt;
 
 &lt;p&gt;At the end of last year, 2021, I felt that it had been the best year of
@@ -67,8 +67,8 @@ I hope it all turned out okay.&lt;/p&gt;</description>
       <title>Setting up Syncthing</title>
       <link>https://smlavine.com/blog/syncthing</link>
       <guid isPermaLink="true">https://smlavine.com/blog/syncthing</guid>
-      <author>mail@smlavine.com (Sebastian LaVine)</author>
-      <pubDate>Tue, 22 Nov 2022 00:00:00 -0500</pubDate>
+      <author>Sebastian LaVine</author>
+      <pubDate>Tue, 22 Nov 2022</pubDate>
       <description>&lt;p&gt;For a while now I've wanted to set up Syncthing to sync music and
 schoolwork between my laptop and my desktop. Getting it up and running was as
 simple as &lt;code&gt;sudo pacman -Syu syncthing&lt;/code&gt; on my two computers,
@@ -191,8 +191,8 @@ does raises concern over the tool's reliability.&lt;/p&gt;</description>
       <title>KJV Bible pictures</title>
       <link>https://smlavine.com/blog/bible</link>
       <guid isPermaLink="true">https://smlavine.com/blog/bible</guid>
-      <author>mail@smlavine.com (Sebastian LaVine)</author>
-      <pubDate>Wed, 23 Feb 2022 00:00:00 -0500</pubDate>
+      <author>Sebastian LaVine</author>
+      <pubDate>Wed, 23 Feb 2022</pubDate>
       <description>&lt;p&gt;Here are some pictures of a little King James Bible I got at a thrift store a
 few years ago for a dollar.&lt;/p&gt;
 
