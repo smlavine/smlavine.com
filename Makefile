@@ -23,10 +23,10 @@ $(BUILDDIR): static/
 $(BUILDDIR)/style.css: src/main.scss src/style.scss
 	sass --no-source-map src/style.scss $@
 
-$(BUILDDIR)/pages/style.css: src/main.scss src/pages/style.scss
+$(BUILDDIR)/pages/style.css: src/style.scss src/pages/style.scss
 	sass --no-source-map src/pages/style.scss $@
 
-$(BUILDDIR)/blog/style.css: src/main.scss src/blog/style.scss
+$(BUILDDIR)/blog/style.css: src/style.scss src/blog/style.scss
 	sass --no-source-map src/blog/style.scss $@
 
 check: accessibility
