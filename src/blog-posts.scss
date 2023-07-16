@@ -1,0 +1,16 @@
+.blog-posts {
+  background-color: skyblue;
+  border: 2px solid cornflowerblue;
+  border-radius: 5px;
+  padding-top: 0.5em;
+  padding-right: 1em;
+  padding-bottom: 0.5em;
+}
+
+.blog-posts .date {
+  float: right;
+}
+
+.rss-link > img {
+  @extend .unbordered;
+}

@@ -5,6 +5,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=0.7">
   <title>Sebastian LaVine's website</title>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/blog/index.xml">
   <link rel="shortcut icon" href="https://smlavine.com/images/favicon.jpg" />
   <link rel="stylesheet" type="text/css" href="/style.css" />
 </head>
@@ -12,30 +13,33 @@
 <body>
 
   <main>
-    <article>
-      <div class="blurb">
-        <section>
-          <h1>Hi!</h1>
-          <p>
-            My name is Sebastian LaVine.
-            I am a second-year undergrad at <a href="https://rit.edu">RIT</a> studying Computer Science.
-            I have a passion for free software and programming, and a habit of singing, acting, and improv comedy.
-            Sometimes I write things.
-          </p>
-        </section>
-        <img src="https://smlavine.com/images/headshot.jpg" alt="A picture of me, Sebastian LaVine." />
+    <div class="blurb">
+      <div>
+      <h1>Hi!</h1>
+      <p>
+        My name is Sebastian LaVine.
+        I am a second-year undergrad at <a href="https://rit.edu">RIT</a> studying Computer Science. I have a passion for free software and programming, and a habit of singing, acting, and improv comedy.
+        Sometimes I write things.
+      </p>
       </div>
+      <img src="https://smlavine.com/images/headshot.jpg" alt="A picture of me, Sebastian LaVine." />
+    </div>
 
-      <section id="blog-posts">
+    <section class="colored-list-container">
+      <div>
         <h2>Recent blog posts</h2>
-        <ul>
-          <li><a href="/blog/2022">2022</a><span class="date">2023-01-01</span></li>
-          <li><a href="/blog/syncthing">Setting up Syncthing</a><span class="date">2022-11-22</span></li>
-          <li><a href="/blog/bible">KJV Bible pictures</a><span class="date">2022-02-23</span></li>
-          <li><a href="/blog">more posts...</a></li>
-        </ul>
-      </section>
+        <a class="rss-link" href="/blog/index.xml"><img src="https://smlavine.com/images/rss.png" alt="RSS" title="Subscribe with RSS!"/></a>
+      </div>
+      <ul class="blog-posts">
+        <li><a href="/blog/2022">2022</a><span class="date">2023-01-01</span></li>
+        <li><a href="/blog/syncthing">Setting up Syncthing</a><span class="date">2022-11-22</span></li>
+        <li><a href="/blog/bible">KJV Bible pictures</a><span class="date">2022-02-23</span></li>
+        <li><a href="/blog">more posts...</a></li>
+      </ul>
+    </section>
 
+    <section class="colored-list-container">
+      <h2>You can find me other places, too</h2>
       <ul class="links">
         <li><a href="https://www.linkedin.com/in/smlavine/"><b>LinkedIn</b></a></li>
         <li>
@@ -58,7 +62,7 @@
         <li><b>Lichess:</b> <a href="https://lichess.org/@/smlavine">smlavine</a></li>
         <li><b>LibriVox:</b> <a href="https://librivox.org/reader/15265">smlavine</a></li>
       </ul>
-    </article>
+    </section>
   </main>
 </body>
 
