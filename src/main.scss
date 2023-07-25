@@ -24,12 +24,12 @@ $blurb-width: 768px;
   }
 }
 
-.blurb > section {
+.blurb > :first-child {
   text-align: center;
   flex-basis: 50%;
 }
 
-.blurb img {
+.blurb > img:nth-child(2) {
   flex-basis: 50%;
   max-width: 40%;
   max-height: auto;
