@@ -38,27 +38,28 @@ $blurb-width: 768px;
 .colored-list-container {
   display: flex;
   flex-direction: column;
-}
 
-/* If the first child of a colored-list-container is a div, then it is probably
- * containing a header and an RSS image link. Style such that the heading and
- * the RSS image link are on the same horizontal row, above the bordered list.
- */
-.colored-list-container > div:first-child {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-right: 10px;
-}
+  /* If the first child of a colored-list-container is a div, then it is
+   * probably containing a header and an RSS image link. Style such that the
+   * heading and the RSS image link are on the same horizontal row, above the
+   * bordered list.
+   */
+  > div:first-child {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 10px;
 
-.colored-list-container > div:first-child > a {
-  /* Center vertically */
-  margin-top: auto;
-  margin-bottom: auto;
-}
+    > a {
+      /* Center vertically */
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+  }
 
-.colored-list-container > :nth-child(2) {
-  margin-top: 0;
+  > :nth-child(2) {
+    margin-top: 0;
+  }
 }
 
 .links {
