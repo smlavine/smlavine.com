@@ -1,12 +1,11 @@
 @import "../style";
 
-h1 {
-  /* Remove space between <h1> and <span id="date"> immediately below */
-  display: inline;
-}
-
-span#publication-date {
-  float: right;
+.blog-post > header {
   font-weight: bold;
-  font-style: italic;
+
+  div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }

@@ -12,6 +12,11 @@ main {
   line-height: 1.5;
 }
 
+h1 {
+  font-size: 2em; /* Even when in containers like <article> or <section> */
+  text-align: center;
+}
+
 .blurb {
   display: flex;
 }
