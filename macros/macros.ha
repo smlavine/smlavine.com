@@ -3,44 +3,51 @@
 
 use bytes;
 use io;
-use fmt;
 use os;
-use strings::{fromutf8, toutf8};
 
-// TODO: write it here as a string instead? "``" and "''"
-let OPENQUOTE:  []u8 = ['`', '`'];   // ``
-//let CLOSEQUOTE: []u8 = ['\'', '\'']; // ''
-let CLOSEQUOTE: []u8 = ['"', '"']; // ''
+// I would have preferred to use a simpler circular linked list approach for
+// this; see <https://todo.sr.ht/~sircmpwn/hare/862>.
 
-// Swaps the delimiter
-fn swap(delimiter_ptr_ptr: **[]u8) void = {
-	switch (*delimiter_ptr_ptr) {
-	case &OPENQUOTE =>
-		*delimiter_ptr_ptr = &CLOSEQUOTE;
-	case &CLOSEQUOTE =>
-		*delimiter_ptr_ptr = &OPENQUOTE;
-	case =>
-		abort("invalid delimiter");
-	};
+type quote = enum u8 {
+	OPEN  = 0,
+	CLOSE = 1,
 };
 
+type delimiter = struct {
+	text: []u8,
+	id: quote,
+	next_id: quote,
+};
+
+const DELIMITERS: [_]delimiter = [
+	delimiter {
+		text = ['`', '`'],
+		id = quote::OPEN,
+		next_id = quote::CLOSE,
+	},
+	delimiter {
+		//text = ['\'', '\''],
+		text = ['"', '"'],
+		id = quote::CLOSE,
+		next_id = quote::OPEN,
+	},
+];
+
 export fn main() void = {
-	let buf = io::drain(os::stdin)!;
+	let buf: []u8 = io::drain(os::stdin)!;
 	defer free(buf);
 
-	for (let delimiter: *[]u8 = &OPENQUOTE, so_far: []u8 = buf;
+	for (let delim = DELIMITERS[quote::OPEN], so_far = buf;
 		len(so_far) > 0;
-		swap(&delimiter)
+		delim = DELIMITERS[delim.next_id]
 	) {
 		// All the text before and after the delimiter
-		let (before, after) = bytes::cut(so_far, *delimiter);
+		let (before, after) = bytes::cut(so_far, delim.text);
 
-		if (delimiter == &OPENQUOTE) {
-			// The part before the OPENQUOTE was regular text and
+		if (delim.id == quote::OPEN) {
+			// The part before the quote::OPEN was regular text and
 			// therefore should not be processed for macros
 			io::write(os::stdout, before)!;
-			//fmt::printfln("before: '{}'\n  len(so_far): {}",
-			//	fromutf8(before)!, len(so_far))!;
 		};
 
 		so_far = after;
