@@ -5,6 +5,9 @@ use bytes;
 use io;
 use os;
 
+// An error was encountered when processing a macro.
+type error = !void;
+
 // I would have preferred to use a simpler circular linked list approach for
 // this; see <https://todo.sr.ht/~sircmpwn/hare/862>.
 
@@ -33,6 +36,10 @@ const DELIMITERS: [_]delimiter = [
 	},
 ];
 
+fn process(text: []u8) (error | void) = {
+	return void;
+};
+
 export fn main() void = {
 	let buf: []u8 = io::drain(os::stdin)!;
 	defer free(buf);
@@ -44,10 +51,13 @@ export fn main() void = {
 		// All the text before and after the delimiter
 		let (before, after) = bytes::cut(so_far, delim.text);
 
-		if (delim.id == quote::OPEN) {
-			// The part before the quote::OPEN was regular text and
-			// therefore should not be processed for macros
+		switch (delim.id) {
+		case quote::OPEN =>
+			// before the open quote is regular text; do not
+			// process for macros
 			io::write(os::stdout, before)!;
+		case quote::CLOSE =>
+			process(before)!;
 		};
 
 		so_far = after;
