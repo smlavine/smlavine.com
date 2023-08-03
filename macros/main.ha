@@ -5,7 +5,6 @@ use bytes;
 use io;
 use os;
 
-
 use macro;
 
 // XXX: This type is used instead of io::writer because io::writer doesn't
@@ -34,8 +33,6 @@ const delims: [_]delimiter = [
 		writer = &macro::process,
 	},
 ];
-
-//def IMG_RE = `img!\([[:space:]]*"(.*)"[[:space:]]*,[[:space:]]*"(.*)"[[:space:]]*\)`;
 
 export fn main() void = {
 	let in: []u8 = io::drain(os::stdin)!;

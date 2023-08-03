@@ -18,18 +18,6 @@ def IMG_RE = `img!\([[:space:]]*"(.*)"[[:space:]]*,[[:space:]]*"(.*)"[[:space:]]
 export fn img(h: io::handle, args: []str) (size | io::error) = {
 	assert(len(args) == 2);
 
-	//let written = 0z;
-
-	//written += io::write(h, toutf8(`<a href="`))?;
-	//written += io::write(h, toutf8(args[0]))?;
-	//written += io::write(h, toutf8(`"><img src="`))?;
-	//written += io::write(h, toutf8(args[0]))?;
-	//written += io::write(h, toutf8(`" alt="`))?;
-	//written += io::write(h, toutf8(args[1]))?;
-	//written += io::write(h, toutf8(`"></a>`))?;
-
-	//return written;
-
 	return io::write(h, toutf8(`<a href="`))?
 		+ io::write(h, toutf8(args[0]))?
 		+ io::write(h, toutf8(`"><img src="`))?

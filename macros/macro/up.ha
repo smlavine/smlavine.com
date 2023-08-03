@@ -1,6 +1,6 @@
 // A simple macro that converts all lowercase characters within the macro to
 // uppercase.
-// Not really that practical, but useful for debugging and development.
+// Useful for debugging and development.
 
 use ascii::{strupper};
 use io;
