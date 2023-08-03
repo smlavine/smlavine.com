@@ -7,17 +7,17 @@ use io;
 use regex::{compile};
 use strings::{toutf8};
 
-def UP_RE = `up!\(([^)]*)\)`;
+def UPPER_RE = `upper!\(([^)]*)\)`;
 
 @init fn append_macro() void = {
 	append(macros, macro {
-		description = `up!(...)`,
-		regex = compile(UP_RE)!,
-		formatter = &up,
+		description = `upper!(...)`,
+		regex = compile(UPPER_RE)!,
+		formatter = &upper,
 	});
 };
 
-export fn up(h: io::handle, args: []str) (size | io::error) = {
+export fn upper(h: io::handle, args: []str) (size | io::error) = {
 	assert(len(args) == 1);
 	let s = strupper(args[0]);
 	let written = io::write(h, toutf8(s))?;
