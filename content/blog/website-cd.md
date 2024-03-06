@@ -2,7 +2,7 @@
 title: 'System Log #8: Automatically deploying smlavine.com'
 date: 2022-09-26
 params:
-  lastUpdated: 2022-09-26
+  lastUpdated: 2024-03-05
 ---
 
 In [a previous entry][previously] I discussed how I made my website
@@ -13,8 +13,10 @@ to do the same with my main website, [smlavine.com][smlavine.com].
 [gmf]: https://goodmoviefilm.com
 [smlavine.com]: https://smlavine.com
 
-For the time being, the website is written in pure HTML/CSS, so unlike
-goodmoviefilm.com (which uses m4) there is no build step required.
+For the time being, the website is written in pure HTML/CSS *(edit
+2024-03-05: this is no longer true; I use
+Markdown, Sass, and [kiln](https://kiln.adnano.co))*, so unlike goodmoviefilm.com (which
+uses m4) there is no build step required.
 
 A difference is that in addition to these text files, I also have several large
 binary files such as images and PDFs that I obviously do not want to check into
