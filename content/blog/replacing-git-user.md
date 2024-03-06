@@ -1,26 +1,27 @@
 ---
-title: Replacing the git user with user accounts
-author: Sebastian LaVine
+title: 'System Log #3: Replacing the git user with user accounts'
 date: 2022-05-08
+params:
+  lastUpdated: 2022-05-08
 ---
 
 While I use [sourcehut](https://sr.ht/~smlavine) for my public
-programming presence online, I also have a ```git``` user on my VPS
+programming presence online, I also have a `git` user on my VPS
 where I keep private copies of various git repositories. For a while, I
-used gitweb to show certain repositories at ```git.smlavine.com```, but
+used gitweb to show certain repositories at `git.smlavine.com`, but
 it was clunky to configure, so I turned that off once I established
 myself on sourcehut. As of writing, that subdomain redirects to my sr.ht
 profile.
 
 This works well and good, but it has its flaws. For one thing, all
-repositories have the same access level: the ```git``` user. That means
+repositories have the same access level: the `git` user. That means
 I can't give certain SSH keys access to only some repositories. Unix is
 meant to be a multi-user environment, so I am going to be deleting
-```git``` and replacing it with a personal ```smlavine``` user. In the
-future, I might recreate the ```git``` user, for public read-only
+`git` and replacing it with a personal `smlavine` user. In the
+future, I might recreate the `git` user, for public read-only
 access. But not right now.
 
-I have ```find . -maxdepth 4 -type d -name '\*.git' | wc -l``` => **30**
+I have `find . -maxdepth 4 -type d -name '\*.git' | wc -l` => **30**
 repositories I need to replace. Another change I'm going to make while
 I'm here is to keep things flat: at the moment, I have some repositories
 in directories to match a sourcehut project they're in, like so:
@@ -62,8 +63,8 @@ root@blue:~# ls -A /home/smlavine
 ```
 
 Looks about right. I'm going to quickly
-```rm /home/smlavine/.bash_logout /home/smlavine/.bashrc```, so that I
-can instead use the system default ```/etc/bash.bashrc``` I've already
+`rm /home/smlavine/.bash_logout /home/smlavine/.bashrc`, so that I
+can instead use the system default `/etc/bash.bashrc` I've already
 installed. Now let's get login going:
 
 ```
@@ -82,7 +83,7 @@ total 8.0K
 drwxr-xr-x 2 smlavine smlavine 4.0K May  9 01:08 .ssh/
 ```
 
-Now I create new bare git repos for each I am moving from ```git```:
+Now I create new bare git repos for each I am moving from `git`:
 
 ```
 $ ssh git@smlavine.com find . -maxdepth 4 -type d -name '\*.git' | xargs -I'{}' basename '{}' .git | sed 's:^:git/:' > repos.txt
@@ -122,11 +123,11 @@ anymore, bringing down to 28.
 
 I also added the SSH key from my phone in this process.
 
-After this, I removed the ```git``` user. But, as ```git``` is also
+After this, I removed the `git` user. But, as `git` is also
 hooked up to dovecot, I had to do [the trick][0] that I also did for
-```nickreg```:
+`nickreg`:
 
-[0]: https:smlavine.com/systemlog#deleting-nickreg
+[0]: https:smlavine.com/blog/002_deleting-nickreg/
 
 ```
 $ ssh smlavine@smlavine.com

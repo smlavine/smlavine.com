@@ -1,0 +1,18 @@
+title = "smlavine.com"
+
+[[tasks]]
+name = "Website"
+url = "https://smlavine.com"
+input = [".html", ".md"]
+output = ".html"
+template = ".html"
+preprocess.md = "mdtohtml -u"
+static_dir = "static"
+output_dir = "public"
+
+# TODO make sure only get blog posts in feed
+[[tasks.feeds]]
+input_dir = "blog"
+title = "Sebastian LaVine's Blog"
+template = "atom.xml"
+output = "blog/index.xml"

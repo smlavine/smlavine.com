@@ -2,16 +2,16 @@
 title: Setting up Syncthing
 date: 2022-11-22
 params:
-  last-updated: 2022-11-22
+  lastUpdated: 2022-11-22
 ---
 
 For a while now I've wanted to set up Syncthing to sync music and
-schoolwork between my laptop and my desktop. But unlike my [system
-log][systemlog] entries, this has been so easy that there's really no
-need for a big writeup. Getting it up and running was as simple as `sudo
-pacman -Syu syncthing` on my two computers, following [this
-guide][syncthing-guide], and clicking a few buttons. Easy! The few bits
-of configuration I did in the GUI are:
+schoolwork between my laptop and my desktop. But unlike my system log
+entries, this has been so easy that there's really no need for a big
+writeup. Getting it up and running was as simple as `sudo pacman -Syu
+syncthing` on my two computers, following [this guide][syncthing-guide],
+and clicking a few buttons. Easy! The few bits of configuration I did in
+the GUI are:
 
 - Enabled password login
 - Typed in my desktop's device ID
@@ -117,5 +117,4 @@ adding them to my list of files to ignore for syncing, since luckily
 these weren't particular important music files to me. But the issue
 does raises concern over the tool's reliability.
 
-[systemlog]: https://smlavine.com/blog/systemlog
 [syncthing-guide]: https://docs.syncthing.net/intro/getting-started.html

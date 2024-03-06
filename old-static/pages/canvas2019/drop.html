@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<!--
+Copyright (C) 2019-2020 Sebastian LaVine <mail@smlavine.com>
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.  This file is offered as-is,
+without any warranty.
+
+Description: Draws a random circle where the user clicks, with the radius
+determined by how long the click was held for. Enable/Disable
+gravity with button.
+-->
+
+<html>
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=0.7">
+</head>
+
+<title> drop.html </title>
+
+<!-- style attributes make screen unscrollable -->
+<body style="margin: 0; height: 100%; overflow: hidden;">
+
+<noscript>Enable JavaScript to use this page.</noscript>
+
+<!-- coords/position-setting needed for heading to be above canvas -->
+<h1 id="h" style="z-index: 2; top: 0px; left: 0px; position: absolute;">
+Click and hold to make circles. <a href="../../">Back</a>
+</h1>
+
+<button type="button" id="toggle"
+style="z-index: 2;
+position: absolute;
+top: 0px;
+left: 0px;">
+Toggle gravity
+</button>
+
+<!-- Where circles are drawn. -->
+<canvas id="final"
+style="position: absolute;
+top: 0px;
+left: 0px;">
+</canvas>
+
+<script>
+
+class Circle {
+  constructor(x, y, radius, color, speed) {
+    this.x = x;
+    this.y = y;
+    this.radius = radius;
+    this.color = color;
+    this.speed = 2.0 / speed;
+    this.loops = 0;
+  }
+};
+circles = []; // info of all circles
+
+f = document.getElementById("final");
+f.width = window.innerWidth;
+f.height = window.innerHeight;
+
+fctx = f.getContext("2d");
+fctx.font = "20px Arial";
+fctx.textAlign = "center";
+// button
+var but = document.getElementById("toggle");
+
+// returns a string holding a random color in hex, like "#FF23BA"
+function randColor() {
+const hexchars = "0123456789ABCDEF";
+var colorstr = "#";
+for (var i = 0; i < 6; i++) {
+colorstr += hexchars.charAt(
+Math.floor(Math.random() * hexchars.length));
+}
+return colorstr;
+}
+
+var x, y, radius = 4;
+// draws template circle
+function drawTemplate(e) {
+fctx.beginPath();
+fctx.strokeStyle = randColor();
+fctx.arc(x, y, radius, 0, 2 * Math.PI);
+fctx.stroke();
+radius += 4;
+}
+
+// holds interval for template drawing
+var int = null; // null means there is not existing interval
+
+// draw to final
+window.onmouseup = function(e) {
+if (dropping)
+return;
+if (int !== null) { // if there is an interval
+clearInterval(int);
+
+// full circle color of outermost circle
+fctx.fillStyle = fctx.strokeStyle;
+fctx.beginPath();
+fctx.arc(x, y, radius, 0, 2 * Math.PI);
+fctx.fill();
+// store circ. info
+circles.push(new Circle(x, y, radius, fctx.fillStyle,
+Math.random() * 5.0 + 1));
+int = null; // reset timer
+radius = 4; // reset radius
+}
+}
+
+var dropping = false; // true if circles are being dropped
+// Drop the circles.
+function dropCircles(e) {
+fctx.clearRect(0, 0, f.offsetWidth, f.offsetHeight);
+for (var i = 0; i < circles.length; i++) {
+
+circles[i].y += circles[i].speed;
+// if circle is past bottom, loop around
+if (circles[i].y - 2 * circles[i].radius > 
+window.innerHeight) {
+circles[i].y = -(2 * circles[i].radius);
+circles[i].loops++;
+}
+fctx.fillStyle = circles[i].color;
+fctx.beginPath();
+fctx.arc(circles[i].x, circles[i].y, circles[i].radius,
+0, 2 * Math.PI);
+fctx.fill();
+fctx.fillStyle = "black";
+fctx.fillText(circles[i].loops, circles[i].x, circles[i].y);
+}
+}
+
+//  Circles are detected by the window.onmousedown event. However,
+//  I do not want a circle drawn if the button is clicked. So, as
+//  the button event triggers first, setting this will prevent the
+//  window.onmousedown to draw, as it checks for this variable
+//  before starting. 
+var allowWindowClick = true;
+// Trigger dropping of the circles
+but.onclick = function(e) {
+allowWindowClick = false;
+if (dropping) {
+dropping = false;
+clearInterval(int);
+int = null;
+} else if (int === null) {
+dropping = true;
+int = setInterval(dropCircles, 4, e);
+}
+}
+
+// Trigger the drawing of circles.
+
+window.onmousedown = function(e) {
+// If allowWindowClick is false (and, therefore, the button 
+// was clicked) do not trigger the drawing of the circle.
+if (dropping)
+return;
+if (!allowWindowClick) {
+// Allow for clicks outside of the button in the future...
+allowWindowClick = true;
+// ...and get outta here!
+return;
+}
+
+x = e.clientX, y = e.clientY; // coords of cursor
+
+var butrect = but.getBoundingClientRect(); // bounds of button
+
+// if click isn't within bounds of button
+if ( (x < butrect.left || x > butrect.right) ||
+(y > butrect.top  || y < butrect.bottom) ) {
+if (int === null)
+int = setInterval(drawTemplate, 30, e);
+}
+}
+
+
+</script>
+</body>
+</html>

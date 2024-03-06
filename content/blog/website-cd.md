@@ -1,14 +1,15 @@
 ---
-title: Automatically deploying smlavine.com
-author: Sebastian LaVine
+title: 'System Log #8: Automatically deploying smlavine.com'
 date: 2022-09-26
+params:
+  lastUpdated: 2022-09-26
 ---
 
 In [a previous entry][previously] I discussed how I made my website
 [goodmoviefilm.com][gmf] automatically deployable. Now the time has come
 to do the same with my main website, [smlavine.com][smlavine.com].
 
-[previously]: TODO
+[previously]: https://smlavine.com/blog/004_goodmoviefilm-cd/
 [gmf]: https://goodmoviefilm.com
 [smlavine.com]: https://smlavine.com
 

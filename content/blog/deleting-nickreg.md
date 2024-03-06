@@ -1,18 +1,19 @@
 ---
-title: Deleting nickreg user
-author: Sebastian LaVine
+title: 'System Log #2: Deleting nickreg user'
 date: 2022-05-07
+params:
+  lastUpdated: 2022-05-07
 ---
 
 When I iniitally registered my nickname on various IRC networks last
-year, I created a new user account ```nickreg``` to give as the
+year, I created a new user account `nickreg` to give as the
 confirmation email. Maybe I was planning to set up an individual email
 address for every service I sign up to? Maybe I was worried about
 privacy or spam?
 
 Either way, I use my regular email address for so much else that IRC is
 the least of my worries. And I, uh, haven't done that second thing. So
-I've decided to delete the ```nickreg``` user from my VPS altogether.
+I've decided to delete the `nickreg` user from my VPS altogether.
 
 First things first, what does this user do?
 

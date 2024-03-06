@@ -1,12 +1,13 @@
 ---
-title: Excess mail from omnavi crontab
-author: Sebastian LaVine
+title: 'System Log #1: Excess mail from omnavi crontab'
 date: 2021-12-21
+params:
+  lastUpdated: 2021-12-21
 ---
 
 After taking a backup of blue, I noticed that there was an oddly high
-amount of disk space in ```/home/omnavi```. I tracked this down to the
-```Mail``` directory, equally odd since there should be no substantial
+amount of disk space in `/home/omnavi`. I tracked this down to the
+`Mail` directory, equally odd since there should be no substantial
 interaction with that user through email. In the directory for
 /home/omnavi/Mail/Inbox/new was a listing like the following:
 
@@ -88,12 +89,12 @@ Date: Mon, 20 Dec 2021 00:17:01 +0000 (UTC)
 ```
 
 Given these clues, I was able to determine the problem, which was that
-```omnavi``` had its cron file inaccurately set to ```/etc/crontab```.
+`omnavi` had its cron file inaccurately set to `/etc/crontab`.
 This file is formatted differently from other cron files, in that it has
 an extra field for the user executing the command, thus "root: not
 found".
 
-I solved this problem by running ```crontab -r``` as the ```omnavi```
+I solved this problem by running `crontab -r` as the `omnavi`
 user, and then deleting all the excess mail that had accumulated.
 
 rkta in #sr.ht.watercooler on libera.chat pointed me in the direction of

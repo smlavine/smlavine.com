@@ -1,7 +1,8 @@
 ---
-title: Automatically deploying goodmoviefilm.com
-author: Sebastian LaVine
+title: 'System Log #4: Automatically deploying goodmoviefilm.com'
 date: 2022-05-12
+params:
+  lastUpdated: 2022-05-12
 ---
 
 Right now, the way I update my website [goodmoviefilm.com][0] is by

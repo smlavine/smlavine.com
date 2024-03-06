@@ -1,8 +1,11 @@
 ---
+title: OpenAI
 date: 2022-07-22
+params:
+  lastUpdated: 2022-07-22
 ---
 
-I recently read [this intersting article][0] from Simon Willison about
+I recently read [this interesting article][0] from Simon Willison about
 using GPT-3 to explain how code works. I decided to try it out with some
 code of my own. Below is a "conversation" I had with GPT-3 in the
 [OpenAI playground][1], with my prompts in **bold** and its replies
@@ -16,7 +19,8 @@ code of my own. Below is a "conversation" I had with GPT-3 in the
 <details>
 <summary>[Click to expand code]</summary>
 <dl>
-```
+
+```go
 package main
 
 import (
@@ -294,6 +298,7 @@ func main() {
 	}
 }
 ```
+
 </dl>
 </details>
 

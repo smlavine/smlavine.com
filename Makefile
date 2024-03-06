@@ -1,45 +1,42 @@
 .POSIX:
 
-BUILDDIR = public
+OUTDIR = public
 
 REMOTEPATH = /var/www/smlavine.com
 
 ####
 
 all: \
-	$(BUILDDIR) \
-	$(BUILDDIR)/blog/style.css \
-	$(BUILDDIR)/pages/style.css \
-	$(BUILDDIR)/style.css \
+	kiln \
+	$(OUTDIR)/style.css \
+	$(OUTDIR)/pages/style.css \
+	$(OUTDIR)/blog/style.css
 
-# $(BUILDDIR) is seeded with the static files that are simply copied.
-# XXX: the build will fail if later build steps need a directory to exist that
-# doesn't exist in static
-# XXX: $(BUILDDIR) doesn't depend on the CONTENTS of static/ so a `make -B` is
-# needed to force a rebuild of the site
-$(BUILDDIR): static/
-	cp -r static $@
+# Kiln builds and templates site content and copies static content into the
+# proper place.
+kiln:
+	kiln build
 
-$(BUILDDIR)/style.css: src/main.scss src/style.scss
-	sass --no-source-map src/style.scss $@
+$(OUTDIR)/style.css: style/main.scss style/style.scss
+	sass --no-source-map style/style.scss $@
 
-$(BUILDDIR)/pages/style.css: src/style.scss src/pages/style.scss
-	sass --no-source-map src/pages/style.scss $@
+$(OUTDIR)/pages/style.css: style/style.scss style/pages/style.scss
+	sass --no-source-map style/pages/style.scss $@
 
-$(BUILDDIR)/blog/style.css: src/style.scss src/blog/style.scss
-	sass --no-source-map src/blog/style.scss $@
+$(OUTDIR)/blog/style.css: style/style.scss style/blog/style.scss
+	sass --no-source-map style/blog/style.scss $@
 
 check: accessibility
 
 accessibility: all
-	./check-accessibility $(BUILDDIR)
+	./check-accessibility $(OUTDIR)
 
-deploy: $(BUILDDIR)
+deploy: $(OUTDIR)
 	@if [ ! "$(deploy)" ]; then echo 'Error: deploy must be set.'; exit 1; fi
-	@# The slash at the end of $(BUILDDIR) is needed; see 81076bc.
-	rsync --rsh='ssh -o StrictHostKeyChecking=no' -r $(BUILDDIR)/ '$(deploy):$(REMOTEPATH)'
+	@# The slash at the end of $(OUTDIR) is needed; see 81076bc.
+	rsync --rsh='ssh -o StrictHostKeyChecking=no' -r $(OUTDIR)/ '$(deploy):$(REMOTEPATH)'
 
 clean:
-	rm -rf $(BUILDDIR)
+	rm -rf $(OUTDIR)
 
-.PHONY: all accessibility check deploy clean
+.PHONY: all accessibility check deploy clean kiln

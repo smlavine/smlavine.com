@@ -1,7 +1,8 @@
 ---
-title: Upgrading to Debian Bullseye
-author: Sebastian LaVine
+title: 'System Log #6: Upgrading to Debian Bullseye'
 date: 2022-09-11
+params:
+  lastUpdated: 2022-09-11
 ---
 
 Today I upgraded from Debian Buster to Debian Bullseye. I wasn't sure

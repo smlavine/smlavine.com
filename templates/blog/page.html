@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=0.7">
+<title>{{ .Title }}</title>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="/blog/index.xml">
+<link rel="shortcut icon" href="https://smlavine.com/images/favicon.jpg"/>
+<link rel="stylesheet" type="text/css" href="/blog/style.css"/>
+</head>
+
+<body>
+
+<main>
+
+<article class="blog-post">
+
+<header>
+  <h1>{{ .Title }}</h1>
+  <div>
+    <address>On <a href="/blog">Sebastian LaVine&apos;s Blog</a></address>
+    <span>Published on <time>{{ .Date.Format "2006-01-02" }}</time></span>
+  </div>
+  <hr>
+</header>
+
+{{ .Content | safeHTML }}
+
+</article>
+
+</main>
+
+<footer>
+<hr>
+<p>Last updated: {{ .Params.lastUpdated.Format "2006-01-02" }}</p>
+<p><a href="../">↩︎ More blog posts</a></p>
+</footer>
+
+</body>
+</html>

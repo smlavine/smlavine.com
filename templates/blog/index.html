@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=0.7">
+<title>{{ .Title }}</title>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="/blog/index.xml">
+<link rel="shortcut icon" href="https://smlavine.com/images/favicon.jpg"/>
+<link rel="stylesheet" type="text/css" href="/style.css"/>
+</head>
+
+<body>
+
+<main>
+
+<article class="colored-list-container">
+  <div>
+    <h1>{{ .Title }}</h1>
+    <a class="rss-link" href="/blog/index.xml"><img src="https://smlavine.com/images/rss.png" alt="RSS" title="Subscribe with RSS!"/></a>
+  </div>
+  <ul class="blog-posts">
+    {{- with site.Root.GetPage "/blog" -}}
+      {{- range .Pages }}
+    <li><a href="{{ .Path }}">{{ .Title }}</a><span class="date">{{ .Date.Format "2006-01-02" }}</span></li>
+      {{- end -}}
+    {{- end }}
+  </ul>
+</article>
+
+</main>
+
+<footer>
+<hr>
+<p>Last updated: {{ .Params.lastUpdated.Format "2006-01-02" }}</p>
+<p><a href="../">↩︎ Back to Home</a></p>
+</footer>
+
+</body>
+</html>

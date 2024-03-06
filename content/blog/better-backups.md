@@ -1,7 +1,8 @@
 ---
-title: "Better" backups
-author: Sebastian LaVine
+title: 'System Log #5: "Better" backups'
 date: 2022-08-07
+params:
+  lastUpdated: 2022-08-07
 ---
 
 Currently I back up my server every once and a while by manually running

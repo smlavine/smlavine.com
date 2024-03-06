@@ -1,7 +1,8 @@
 ---
-title: Pausing WordPress services
-author: Sebastian LaVine
+title: 'System Log #9: Pausing WordPress services'
 date: 2023-10-01
+params:
+  lastUpdated: 2023-10-01
 ---
 
 WordPress is a real pain to host.

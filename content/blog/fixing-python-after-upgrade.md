@@ -1,7 +1,8 @@
 ---
-title: Fixing Python after Upgrading Debian
-author: Sebastian LaVine
+title: 'System Log #7: Fixing Python after Upgrading Debian'
 date: 2022-09-14
+params:
+  lastUpdated: 2022-09-14
 ---
 
 After I upgraded to Debian Bullseye last week, it took me a few days to
