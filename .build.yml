@@ -1,4 +1,4 @@
-image: alpine/edge
+image: archlinux
 triggers:
   - action: email
     condition: failure
@@ -7,6 +7,8 @@ packages:
   - dart-sass
   - perl
   - rsync
+  - kiln
+  - mdtohtml
 environment:
   deploy: smlavine.com@smlavine.com
 secrets:
