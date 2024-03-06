@@ -127,7 +127,7 @@ After this, I removed the `git` user. But, as `git` is also
 hooked up to dovecot, I had to do [the trick][0] that I also did for
 `nickreg`:
 
-[0]: https:smlavine.com/blog/002_deleting-nickreg/
+[0]: https:smlavine.com/blog/deleting-nickreg/
 
 ```
 $ ssh smlavine@smlavine.com

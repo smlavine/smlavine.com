@@ -9,7 +9,7 @@ In [a previous entry][previously] I discussed how I made my website
 [goodmoviefilm.com][gmf] automatically deployable. Now the time has come
 to do the same with my main website, [smlavine.com][smlavine.com].
 
-[previously]: https://smlavine.com/blog/004_goodmoviefilm-cd/
+[previously]: https://smlavine.com/blog/goodmoviefilm-cd/
 [gmf]: https://goodmoviefilm.com
 [smlavine.com]: https://smlavine.com
 
