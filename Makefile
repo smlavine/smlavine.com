@@ -17,7 +17,7 @@ all: \
 kiln:
 	kiln build
 
-$(OUTDIR)/style.css: style/main.scss style/style.scss
+$(OUTDIR)/style.css: style/main.scss style/style.scss style/blog-posts.scss
 	sass --no-source-map style/style.scss $@
 
 $(OUTDIR)/pages/style.css: style/style.scss style/pages/style.scss
