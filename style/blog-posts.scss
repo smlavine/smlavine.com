@@ -5,33 +5,10 @@
   padding-top: 0.5em;
   padding-right: 1em;
   padding-bottom: 0.5em;
+}
 
-  display: flex;
-  flex-wrap: wrap;
-  box-sizing: border-box;
-
-  li {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 100%;
-    margin-bottom: 0.5em;
-
-    a {
-      flex: 1;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      width: 90%;
-    }
-  }
-
-  li::before {
-    /* Re-add the bullet point that is removed with flex. */
-    content: "\2022"; /* unicode for bullet point */
-    color: black;
-    margin-right: 1em;
-  }
+.blog-posts .date {
+  float: right;
 }
 
 .rss-link > img {
