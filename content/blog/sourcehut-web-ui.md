@@ -9,7 +9,7 @@ I've been hanging around the [Modal](https://wiki.xxiivv.com/site/modal)
 language project the last week or so and it's been a lot of fun. I made
 the following video to show another contributor how to submit changes to
 the reference implementation through the SourceHut web UI. Hope it's
-useful! Excuse the umms and ahhs and the buzzing in the background.
+useful! Excuse the umms and ahhs.
 
 <video controls>
   <source src="/blog/sourcehut-web-ui/sourcehut-web-ui.webm" type="video/webm"/>
