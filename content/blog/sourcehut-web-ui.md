@@ -11,6 +11,6 @@ the following video to show another contributor how to submit changes to
 the reference implementation through the SourceHut web UI. Hope it's
 useful! Excuse the umms and ahhs and the buzzing in the background.
 
-<video width=800>
+<video controls>
   <source src="/blog/sourcehut-web-ui/sourcehut-web-ui.webm" type="video/webm"/>
 </video>
