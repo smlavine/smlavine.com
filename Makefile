@@ -17,7 +17,17 @@ all: \
 kiln:
 	kiln build
 
-$(OUTDIR)/style.css: style/main.scss style/style.scss style/blog-posts.scss
+etc/dracula/dracula:
+	go build -C etc/dracula
+
+etc/dracula/dracula.css: etc/dracula/dracula
+	etc/dracula/dracula > etc/dracula/dracula.css
+
+$(OUTDIR)/style.css: \
+	style/main.scss \
+	style/style.scss \
+	style/blog-posts.scss \
+	etc/dracula/dracula.css
 	sass --no-source-map style/style.scss $@
 
 $(OUTDIR)/pages/style.css: style/style.scss style/pages/style.scss
@@ -38,5 +48,6 @@ deploy: $(OUTDIR)
 
 clean:
 	rm -rf $(OUTDIR)
+	rm etc/dracula/dracula etc/dracula/dracula.css
 
 .PHONY: all accessibility check deploy clean kiln
