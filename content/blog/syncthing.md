@@ -41,7 +41,7 @@ But I really only want a subset of this available on my phone: my
 favorite music. So, I created a Syncthing Folder of the subdirectory
 `Media/music/mine`, which is much smaller:
 
-```shell-session
+```
 $ j mine
 /home/sebastian/Media/music/mine
 $ dh
@@ -76,7 +76,7 @@ $ dh
 Hmm. The Beatles are still taking up a lot of space, because they are in
 FLAC. Anything else I can do about that?
 
-```shell-session
+```
 $ cd The\ Beatles
 $ dh
 182M    ./Love

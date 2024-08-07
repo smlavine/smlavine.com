@@ -21,7 +21,7 @@ a headache.
 
 So for now, I'm going to hold onto the files,
 
-```shell-session
+```sh
 for service in mariadb php8.2-fpm; do
 	sudo systemctl stop "$service"
 	sudo systemctl disable "$service"
