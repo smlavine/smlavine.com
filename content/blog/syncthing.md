@@ -36,6 +36,8 @@ Next, I turned to syncing music with my Android phone. I installed
 Syncthing through [F-Droid][fdroid], and a few taps later, I was ready
 to go.
 
+[fdroid]: https://f-droid.org/en/packages/com.nutomic.syncthingandroid/
+
 One problem is that my media library is very large -- more than 75GB.
 But I really only want a subset of this available on my phone: my
 favorite music. So, I created a Syncthing Folder of the subdirectory
