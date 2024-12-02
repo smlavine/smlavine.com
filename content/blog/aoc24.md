@@ -1,5 +1,5 @@
 ---
-title: Advent of Code 2024
+title: Advent of Code 2024 in SQLite
 date: 2024-12-02
 params:
   lastUpdated: 2024-12-02
