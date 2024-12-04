@@ -772,7 +772,7 @@ FROM reports WHERE is_safe;
 </dl>
 </details>
 
-Like Day 1, Day 2 was a lot of fun to solve. We explored some more
+Like Day 01, Day 02 was a lot of fun to solve. We explored some more
 tricks of SQL/SQLite, including the power of `TRIGGER`s to perform
 calculations on our input. It also exposes some drawbacks of using
 SQLite to solve this type of problem:
