@@ -779,7 +779,8 @@ SQLite to solve this type of problem:
 
 - In both determining the difference between report levels and in
   determining the correct dampened levels, we must do the combinations
-  ourselves, not programmatically.
+  ourselves, not programmatically. (At least, it's a lot easier to solve
+  the problem this way.)
 - When checking the dampened reports, we do not "exit early" as soon as
   we find a safe report. We could probably accomplish this by either
   rolling our dampened `INSERT` into the trigger, or with more verbose
