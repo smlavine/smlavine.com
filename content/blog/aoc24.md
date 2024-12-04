@@ -213,6 +213,8 @@ Until tomorrow!
 
 </section>
 
+<hr>
+
 <section id="day02">
 
 ## Day 02: Red-Nosed Reports
