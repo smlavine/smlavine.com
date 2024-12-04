@@ -1,5 +1,5 @@
 ---
 title: Sebastian LaVine's blog
 params:
-  lastUpdated: 2024-12-02
+  lastUpdated: 2024-12-04
 ---
