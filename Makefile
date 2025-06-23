@@ -50,4 +50,7 @@ clean:
 	rm -rf $(OUTDIR)
 	rm etc/dracula/dracula etc/dracula/dracula.css
 
-.PHONY: all accessibility check deploy clean kiln
+serve: all
+	http-server public/
+
+.PHONY: all accessibility check deploy clean kiln serve
